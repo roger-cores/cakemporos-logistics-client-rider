@@ -14,6 +14,16 @@ public class Rider extends EntityBase {
 
     private Order order2;
 
+    private String vehicleNumber;
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+
     public Order getOrder2() {
         return order2;
     }

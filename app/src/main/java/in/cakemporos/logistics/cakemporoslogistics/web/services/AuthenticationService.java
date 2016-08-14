@@ -20,8 +20,10 @@ import in.cakemporos.logistics.cakemporoslogistics.events.OnWebServiceCallDoneEv
 import in.cakemporos.logistics.cakemporoslogistics.web.endpoints.AuthenticationEndPoint;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.AuthRequest;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.AuthResponse;
+import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.ChangePassRequest;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.Error;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.Response;
+import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.UserInfo;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.ValidateRequest;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -230,5 +232,107 @@ public class AuthenticationService {
             }
         });
 
+    }
+
+
+    public static void getUserInfo(final Activity activity,
+                                   final Retrofit retrofit,
+                                   final AuthenticationEndPoint authenticationEndPoint,
+                                   final OnWebServiceCallDoneEventListener event){
+        Call<UserInfo> callForUserInfo = authenticationEndPoint.getUserInfo(Utility.getKey(activity).getAccess());
+        callForUserInfo.enqueue(new Callback<UserInfo>() {
+            @Override
+            public void onResponse(Call<UserInfo> call, retrofit2.Response<UserInfo> response) {
+                if(response != null && !response.isSuccessful() && response.errorBody() != null){
+
+                    //Branch: Error
+//                    Converter<ResponseBody, Error> errorConverter =
+//                            retrofit.responseBodyConverter(Error.class, new Annotation[0]);
+//                    try {
+//                        Error error = errorConverter.convert(response.errorBody());
+//                        if(error != null && error.getErrorDescription() != null && error.getErrorDescription().equals(activity.getString(R.string.invalid_credentials))){
+//                            event.onError(R.string.invalid_user_credentials, 0);
+//                        } else event.onContingencyError(0);
+//                    } catch(IOException e){
+//                        e.printStackTrace();
+//                        event.onContingencyError(0);
+//                    }
+                    event.onContingencyError(0);
+
+                } else if(response != null && response.body() != null){
+                    //Branch: Success | Go to validate
+                    event.onDone(R.string.success, 0, response.body());
+                } else {
+                    //Branch: Unexpected Error
+                    event.onContingencyError(0);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserInfo> call, Throwable t) {
+                if(t instanceof IOException){
+                    event.onError(R.string.offline, 2);
+                } else if(t instanceof SocketTimeoutException){
+                    event.onError(R.string.request_timed_out, 3);
+                } else event.onContingencyError(0);
+            }
+        });
+    }
+
+
+    public static void changePassword(final Activity activity,
+                                      final Retrofit retrofit,
+                                      final AuthenticationEndPoint authenticationEndPoint,
+                                      final OnWebServiceCallDoneEventListener event,
+                                      final String password,
+                                      final String newPassword,
+                                      final String email){
+        ChangePassRequest changePassRequest = new ChangePassRequest();
+        changePassRequest.setEmail(email);
+        changePassRequest.setPassword(password);
+        changePassRequest.setNewpassword(newPassword);
+        changePassRequest.setClientId(activity.getString(R.string.client_id));
+        changePassRequest.setClientSecret(activity.getString(R.string.client_secret));
+        Call<Response> callForChangePass = authenticationEndPoint.changePassword(Utility.getKey(activity).getAccess(), changePassRequest);
+
+
+
+        callForChangePass.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                if(response != null && !response.isSuccessful() && response.errorBody() != null){
+
+                    //Branch: Error
+//                    Converter<ResponseBody, Error> errorConverter =
+//                            retrofit.responseBodyConverter(Error.class, new Annotation[0]);
+//                    try {
+//                        Error error = errorConverter.convert(response.errorBody());
+//                        if(error != null && error.getErrorDescription() != null && error.getErrorDescription().equals(activity.getString(R.string.invalid_credentials))){
+//                            event.onError(R.string.invalid_user_credentials, 0);
+//                        } else event.onContingencyError(0);
+//                    } catch(IOException e){
+//                        e.printStackTrace();
+//                        event.onContingencyError(0);
+//                    }
+                    event.onContingencyError(0);
+
+                } else if(response != null && response.body() != null){
+                    //Branch: Success | Go to validate
+                    event.onDone(R.string.success, 0, response.body());
+                } else {
+                    //Branch: Unexpected Error
+                    event.onContingencyError(0);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                if(t instanceof IOException){
+                    event.onError(R.string.offline, 2);
+                } else if(t instanceof SocketTimeoutException){
+                    event.onError(R.string.request_timed_out, 3);
+                } else event.onContingencyError(0);
+            }
+        });
     }
 }

@@ -40,16 +40,16 @@
             android:layout_width="150dp"
             android:clickable="true">
         <ImageView
-            android:id="@+id/grid_book_delivery"
+            android:id="@+id/grid_order_history"
             android:layout_width="match_parent"
             android:clickable="false"
             android:background="@color/white"
-            android:src="@drawable/ic_van"
+            android:src="@drawable/ic_clock"
             android:layout_height="120dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/img_book_delivery"
+                android:text="@string/img_order_history"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
                 android:textSize="20sp"
@@ -61,54 +61,6 @@
             android:layout_margin="10dp"
             android:layout_marginTop="20dp"
             android:id="@+id/grid_2"
-            android:layout_width="150dp"
-            android:clickable="true">
-            <ImageView
-                android:id="@+id/grid_order_history"
-                android:layout_width="match_parent"
-                android:clickable="false"
-                android:background="@color/white"
-                android:src="@drawable/ic_clock"
-                android:layout_height="110dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/img_order_history"
-                android:gravity="center"
-                android:layout_marginTop="100dp"
-                android:textSize="20sp"
-
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_height="140dp"
-            android:background="@color/white"
-            android:layout_margin="10dp"
-            android:id="@+id/grid_3"
-            android:layout_width="150dp"
-            android:clickable="true">
-            <ImageView
-                android:id="@+id/grid_rate_card"
-                android:layout_width="match_parent"
-                android:clickable="false"
-                android:background="@color/white"
-                android:src="@drawable/ic_rupee"
-                android:layout_height="110dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/img_rate_card"
-                android:gravity="center"
-                android:layout_marginTop="100dp"
-                android:textSize="20sp"
-
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_height="140dp"
-            android:background="@color/white"
-            android:layout_margin="10dp"
-            android:id="@+id/grid_4"
             android:layout_width="150dp"
             android:clickable="true">
             <ImageView
@@ -125,49 +77,51 @@
                 android:gravity="center"
                 android:layout_marginTop="100dp"
                 android:textSize="20sp"
+
                 />
         </RelativeLayout>
         <RelativeLayout
             android:layout_height="140dp"
             android:background="@color/white"
             android:layout_margin="10dp"
-            android:id="@+id/grid_5"
+            android:id="@+id/grid_3"
             android:layout_width="150dp"
             android:clickable="true">
             <ImageView
-                android:id="@+id/grid_refer_baker"
+                android:id="@+id/grid_support"
                 android:layout_width="match_parent"
                 android:clickable="false"
                 android:background="@color/white"
-                android:src="@drawable/ic_speaker"
+                android:src="@drawable/ic_rupee"
                 android:layout_height="110dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/img_refer_baker"
+                android:text="@string/img_support"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
                 android:textSize="20sp"
+
                 />
         </RelativeLayout>
         <RelativeLayout
             android:layout_height="140dp"
             android:background="@color/white"
             android:layout_margin="10dp"
-            android:id="@+id/grid_6"
+            android:id="@+id/grid_4"
             android:layout_width="150dp"
             android:clickable="true">
             <ImageView
-                android:id="@+id/grid_app_ver"
+                android:id="@+id/grid_app_version"
                 android:layout_width="match_parent"
                 android:clickable="false"
                 android:background="@color/white"
                 android:src="@drawable/ic_info_phone"
-                android:layout_height="100dp"/>
+                android:layout_height="110dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/img_book_delivery"
+                android:text="@string/img_app_ver"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
                 android:textSize="20sp"

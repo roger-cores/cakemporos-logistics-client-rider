@@ -17,17 +17,12 @@ import retrofit2.http.Path;
  * Created by roger on 10/8/16.
  */
 public interface OrderEndPoint {
-    @GET("user/baker/order")
+    @GET("user/rider/order")
     public Call<List<Order>> getMyOrders(@Header("x-access-token") String accessToken);
 
-    @POST("user/baker/order")
-    public Call<EntityBase> createOrder(@Header("x-access-token") String accessToken, @Body Order order);
+    @PUT("user/rider/order/{orderid}/deliver")
+    public Call<Response> deliverOrder(@Header("x-access-token") String accessToken,@Path("orderid") String id);
 
-    @PUT("user/baker/order/{orderid}/ship")
-    public Call<Response> shipOrder(@Header("x-access-token") String accessToken, @Path("orderid") String id);
-
-    @PUT("user/baker/order/{orderid}/cancel")
-    public Call<Response> cancelOrder(@Header("x-access-token") String accessToken, @Path("orderid") String id);
 
 
 
