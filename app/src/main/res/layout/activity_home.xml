@@ -34,18 +34,18 @@
         android:rowCount="3">
         <RelativeLayout
             android:layout_height="140dp"
-            android:background="@color/white"
+            android:background="@color/white_overlay"
             android:layout_margin="10dp"
             android:layout_marginTop="20dp"
             android:id="@+id/grid_1"
-            android:alpha="0.6"
+
             android:layout_width="150dp"
             android:clickable="true">
         <ImageView
             android:id="@+id/grid_order_history"
             android:layout_width="match_parent"
             android:clickable="false"
-            android:background="@color/white"
+
             android:src="@drawable/ic_clock"
             android:layout_height="120dp"/>
             <TextView
@@ -59,7 +59,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_height="140dp"
-            android:background="@color/white"
+            android:background="@color/white_overlay"
             android:layout_margin="10dp"
             android:layout_marginTop="20dp"
             android:id="@+id/grid_2"
@@ -69,7 +69,6 @@
                 android:id="@+id/grid_my_account"
                 android:layout_width="match_parent"
                 android:clickable="false"
-                android:background="@color/white"
                 android:src="@drawable/ic_user"
                 android:layout_height="110dp"/>
             <TextView
@@ -84,7 +83,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_height="140dp"
-            android:background="@color/white"
+            android:background="@color/white_overlay"
             android:layout_margin="10dp"
             android:id="@+id/grid_3"
             android:layout_width="150dp"
@@ -93,8 +92,7 @@
                 android:id="@+id/grid_support"
                 android:layout_width="match_parent"
                 android:clickable="false"
-                android:background="@color/white"
-                android:src="@drawable/ic_rupee"
+                android:src="@drawable/ic_speaker"
                 android:layout_height="110dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -108,7 +106,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_height="140dp"
-            android:background="@color/white"
+            android:background="@color/white_overlay"
             android:layout_margin="10dp"
             android:id="@+id/grid_4"
             android:layout_width="150dp"
@@ -117,7 +115,6 @@
                 android:id="@+id/grid_app_version"
                 android:layout_width="match_parent"
                 android:clickable="false"
-                android:background="@color/white"
                 android:src="@drawable/ic_info_phone"
                 android:layout_height="110dp"/>
             <TextView

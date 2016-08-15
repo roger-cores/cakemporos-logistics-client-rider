@@ -33,8 +33,8 @@ public class HomeActivity extends AppCompatActivity implements OnWebServiceCallD
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent_book=new Intent(ctx_home,BookDeliveryActivity.class);
-//                startActivity(intent_book);
+                Intent intent_book=new Intent(ctx_home,SupportActivity.class);
+                startActivity(intent_book);
             }
         });
 

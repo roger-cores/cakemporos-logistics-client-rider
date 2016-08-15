@@ -29,10 +29,18 @@
             />
     </android.support.v7.widget.Toolbar>
     <TextView
+        android:padding="50dp"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="@string/call_manager_support"
+        android:layout_height="wrap_content" />
+    <TextView
         android:padding="10dp"
         android:layout_width="match_parent"
         android:textAlignment="center"
-        android:text="@string/version_description"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="@string/email_manager_support"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

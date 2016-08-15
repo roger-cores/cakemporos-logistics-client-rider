@@ -11,5 +11,6 @@
     <color name="skin">#FF948C</color>
     <color name="orange">#ff9900</color>
 
-    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay">#80000000</color>
+    <color name="white_overlay">#80ffffff</color>
 </resources>

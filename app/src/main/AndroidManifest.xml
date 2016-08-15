@@ -41,8 +41,9 @@
         <activity
             android:name=".activities.OrderHistoryActivity"
             android:label="@string/home_name" />
-
-
+        <activity
+            android:name=".activities.SupportActivity"
+            android:label="@string/home_name" />
     </application>
 
 </manifest>

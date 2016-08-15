@@ -1,31 +1,35 @@
 package in.cakemporos.logistics.cakemporoslogistics.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
 import in.cakemporos.logistics.cakemporoslogistics.R;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.entities.Order;
+import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.enums.OrderStatus;
 
 /**
  * Created by maitr on 31-Jul-16.
  */
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
     private Order[] mDataset;
-
+    private Context orderAdapter_ctx;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView order_id_oh,booking_date_oh,pickup_date_oh,drop_date_oh,order_status_oh,customer_name_oh,phone_no_oh,pickup_locaion_oh,drop_location_oh;
-        public ImageButton ok_oh,cancel_oh;
+        public Toolbar menu_toolbar_oh;
         public ViewHolder(View v) {
             super(v);
             order_id_oh=(TextView)v.findViewById(R.id.order_id_order_history);
@@ -37,11 +41,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             phone_no_oh=(TextView)v.findViewById(R.id.phone_no_oh);
             pickup_locaion_oh=(TextView)v.findViewById(R.id.pickup_location_oh);
             drop_location_oh=(TextView)v.findViewById(R.id.drop_location_oh);
-            ok_oh= (ImageButton) v.findViewById(R.id.change_order_status_oh);
+            menu_toolbar_oh=(Toolbar)v.findViewById(R.id.toolbar_menu_oh);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
+    public OrderAdapter(Order[] myDataset,Context ctx) {
+        orderAdapter_ctx=ctx;
+        mDataset = myDataset;
+    }
     public OrderAdapter(Order[] myDataset) {
         mDataset = myDataset;
     }
@@ -61,7 +69,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         String customer_name=mDataset[position].getCustomer().getFirstName()+" "+mDataset[position].getCustomer().getLastName();
@@ -80,33 +88,30 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.order_id_oh.setText(mDataset[position].getOrderCode());
         holder.booking_date_oh.setText(booking_date);
         holder.pickup_date_oh.setText(pickup_date);
-        holder.order_status_oh.setText(mDataset[position].getStatus().toString());
+        holder.order_status_oh.setText(mDataset[position].getStatus()+"");
         holder.drop_date_oh.setText(drop_date);
         holder.customer_name_oh.setText(customer_name);
         holder.phone_no_oh.setText(customer_phone);
         holder.pickup_locaion_oh.setText(mDataset[position].getAddress());
         holder.drop_location_oh.setText(mDataset[position].getCustomer().getAddress());
         //
+        ((AppCompatActivity)orderAdapter_ctx).setSupportActionBar(holder.menu_toolbar_oh);
+        //
         holder.phone_no_oh.setTextColor(Color.parseColor("#845a9a"));
-        //onclick
-        if(!mDataset[position].getId().equals("PEN")){
-            //holder.cancel_oh.setVisibility(View.INVISIBLE);
-            //holder.ok_oh.setVisibility(View.INVISIBLE);
-            if (mDataset[position].getId().equals("CAN")){
-                holder.order_status_oh.setBackgroundColor(Color.RED);
-            }
-            else if (mDataset[position].getId().equals("DISP")){
-                holder.order_status_oh.setBackgroundColor(Color.GREEN);
-            }
-            else if(mDataset[position].getId().equals("DEL")){
-                holder.order_status_oh.setBackgroundColor(Color.BLUE);
-            }
+        //
+        if (mDataset[position].getStatus().equals(OrderStatus.CAN)){
+            holder.order_status_oh.setBackgroundColor(Color.RED);
         }
-        else {
-            holder.cancel_oh.setVisibility(View.VISIBLE);
-            holder.ok_oh.setVisibility(View.VISIBLE);
-            holder.phone_no_oh.setTextColor(Color.YELLOW);
+        else if (mDataset[position].getStatus().equals(OrderStatus.DISP)){
+            holder.order_status_oh.setBackgroundColor(Color.rgb(0,100,0));
         }
+        else if(mDataset[position].getStatus().equals(OrderStatus.DEL)){
+            holder.order_status_oh.setBackgroundColor(Color.BLUE);
+        }
+        /*
+        else if(mDataset[position].getStatus().equals(OrderStatus.READY)){
+            holder.order_status_oh.setBackgroundColor(Color.BLUE);
+        }*/
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -121,4 +126,5 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     {
         this.mDataset=mDataset1;
     }
+
 }

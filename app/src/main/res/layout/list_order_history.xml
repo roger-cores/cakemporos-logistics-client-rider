@@ -21,6 +21,7 @@
             android:layout_height="match_parent">
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
+                android:id="@+id/toolbar_menu_oh"
                 android:layout_height="wrap_content"
                 android:background="@color/purple">
                 <TextView
@@ -50,16 +51,7 @@
                     style="@style/Base.TextAppearance.AppCompat.Medium"
 
                     />
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ok"
-                    android:background="@color/purple"
-                    android:padding="5dp"
-                    android:clickable="true"
-                    android:id="@+id/change_order_status_oh"
-                    android:scaleType="fitCenter"
-                    />
+
             </android.support.v7.widget.Toolbar>
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
