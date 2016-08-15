@@ -1,6 +1,5 @@
 package in.cakemporos.logistics.cakemporoslogistics.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -88,7 +87,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.order_id_oh.setText(mDataset[position].getOrderCode());
         holder.booking_date_oh.setText(booking_date);
         holder.pickup_date_oh.setText(pickup_date);
-        holder.order_status_oh.setText(mDataset[position].getStatus()+"");
+        holder.order_status_oh.setText(mDataset[position].getStatus().toString());
         holder.drop_date_oh.setText(drop_date);
         holder.customer_name_oh.setText(customer_name);
         holder.phone_no_oh.setText(customer_phone);
