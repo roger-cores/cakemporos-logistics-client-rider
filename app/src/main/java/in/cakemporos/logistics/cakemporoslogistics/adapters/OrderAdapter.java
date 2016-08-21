@@ -1,4 +1,4 @@
-package in.cakemporos.logistics.cakemporoslogistics.activities;
+package in.cakemporos.logistics.cakemporoslogistics.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -98,13 +98,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         //
         holder.phone_no_oh.setTextColor(Color.parseColor("#845a9a"));
         //
-        if (mDataset[position].getStatus().equals(OrderStatus.CAN)){
+        if (mDataset[position].getStatus().equals(OrderStatus.CANCELLED)){
             holder.order_status_oh.setBackgroundColor(Color.RED);
         }
-        else if (mDataset[position].getStatus().equals(OrderStatus.DISP)){
+        else if (mDataset[position].getStatus().equals(OrderStatus.DISPATCHED)){
             holder.order_status_oh.setBackgroundColor(Color.rgb(0,100,0));
         }
-        else if(mDataset[position].getStatus().equals(OrderStatus.DEL)){
+        else if(mDataset[position].getStatus().equals(OrderStatus.DELIVERED)){
             holder.order_status_oh.setBackgroundColor(Color.BLUE);
         }
         /*

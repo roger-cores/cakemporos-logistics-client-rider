@@ -1,22 +1,15 @@
 package in.cakemporos.logistics.cakemporoslogistics.activities;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +17,12 @@ import java.util.Collections;
 import java.util.List;
 
 import in.cakemporos.logistics.cakemporoslogistics.R;
+import in.cakemporos.logistics.cakemporoslogistics.adapters.OrderAdapter;
 import in.cakemporos.logistics.cakemporoslogistics.events.OnWebServiceCallDoneEventListener;
 import in.cakemporos.logistics.cakemporoslogistics.utilities.Factory;
 import in.cakemporos.logistics.cakemporoslogistics.web.endpoints.OrderEndPoint;
 import in.cakemporos.logistics.cakemporoslogistics.web.services.OrderService;
 import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.entities.Order;
-import in.cakemporos.logistics.cakemporoslogistics.web.webmodels.enums.OrderStatus;
 import retrofit2.Retrofit;
 
 import static in.cakemporos.logistics.cakemporoslogistics.utilities.FlashMessage.displayContingencyError;
